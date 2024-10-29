@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { ChevronDown, ChevronUp, Copy } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
@@ -18,14 +17,8 @@ const MnemonicDisplay = ({
   copyToClipboard,
 }: MnemonicDisplayProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.3,
-        ease: "easeInOut",
-      }}
-      className="group flex flex-col items-center gap-4 cursor-pointer rounded-lg border border-primary/10 p-8"
+    <div
+      className="animate-fadeInUp group flex flex-col items-center gap-4 cursor-pointer rounded-lg border border-primary/10 p-8 transition-transform duration-300 ease-in-out"
     >
       <div
         className="flex w-full justify-between items-center"
@@ -44,24 +37,12 @@ const MnemonicDisplay = ({
       </div>
 
       {showMnemonic && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.3,
-            ease: "easeInOut",
-          }}
-          className="flex flex-col w-full items-center justify-center"
+        <div
+          className="animate-fadeInUp flex flex-col w-full items-center justify-center transition-transform duration-300 ease-in-out"
           onClick={() => copyToClipboard(mnemonicWords.join(" "))}
         >
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.3,
-              ease: "easeInOut",
-            }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-center w-full items-center mx-auto my-8"
+          <div
+            className="animate-fadeInUp grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-center w-full items-center mx-auto my-8 transition-opacity duration-300 ease-in-out"
           >
             {mnemonicWords.map((word, index) => (
               <p
@@ -71,13 +52,13 @@ const MnemonicDisplay = ({
                 {word}
               </p>
             ))}
-          </motion.div>
+          </div>
           <div className="text-sm md:text-base text-primary/50 flex w-full gap-2 items-center group-hover:text-primary/80 transition-all duration-300">
             <Copy className="size-4" /> Click Anywhere To Copy
           </div>
-        </motion.div>
+        </div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
